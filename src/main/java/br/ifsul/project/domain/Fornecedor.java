@@ -1,4 +1,4 @@
-package br.ifsul.project.domain.entity;
+package br.ifsul.project.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,23 +8,28 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "categoria")
-public class Categoria {
+@Table(name = "fornecedor")
+public class Fornecedor {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nome", length = 50, unique = true, nullable = false)
+    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
 
-    @Column(name = "descricao", columnDefinition = "TEXT")
-    private String descricao;
+    @Column(name = "pessoa_contato", length = 100, nullable = true)
+    private String pessoaContato;
+
+    @Column(name = "telefone", length = 15, unique = true, nullable = true)
+    private String telefone;
 
 }

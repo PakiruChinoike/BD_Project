@@ -1,7 +1,4 @@
-package br.ifsul.project.domain.entity;
-
-import java.math.BigDecimal;
-import java.sql.Date;
+package br.ifsul.project.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,23 +8,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "pedido")
-public class Pedido {
-    
+@Table(name = "departamento")
+public class Departamento {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "data_pedido", nullable = false)
-    private Date dataPedido;
+    @Column(name = "nome", length = 50, unique = true, nullable = false)
+    private String nome;
 
-    @Column(name = "total", nullable = false, precision = 10, scale = 2)
-    private BigDecimal total;
+    @Column(name = "localizacao", length = 100, nullable = true)
+    private String localizacao; 
 
 }

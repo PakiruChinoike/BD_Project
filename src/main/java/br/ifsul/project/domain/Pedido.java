@@ -1,4 +1,4 @@
-package br.ifsul.project.domain.entity;
+package br.ifsul.project.domain;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -11,26 +11,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "ativo")
-public class Ativo {
+@Table(name = "pedido")
+public class Pedido {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nome", length = 100, unique = true, nullable = false)
-    private String nome;
+    @Column(name = "data_pedido", nullable = false)
+    private Date dataPedido;
 
-    @Column(name = "data_compra", nullable = false)
-    private Date dataCompra;
-
-    @Column(name = "valor", nullable = false, precision = 15, scale = 2)
-    private BigDecimal valor;
+    @Column(name = "total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal total;
 
 }
