@@ -1,7 +1,7 @@
 package br.ifsul.project.domain;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,11 +32,14 @@ public class Funcionario {
     @Column(name = "ultimo_nome", length = 50, nullable = false)
     private String ultimoNome;
 
-    @Column(name = "email", unique = true, nullable = false)
+    @Column(name = "profissao", length =50, nullable = true)
+    private String profissao;
+
+    @Column(name = "email", unique = false, nullable = false)
     private String email;
 
     @Column(name = "data_contratacao", nullable = false)
-    private Date dataContratacao;
+    private LocalDate dataContratacao;
 
     @Column(name = "salario", nullable = false, precision = 10, scale = 2)
     private BigDecimal salario;
